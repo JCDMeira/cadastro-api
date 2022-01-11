@@ -18,6 +18,9 @@ export default class User extends Model {
         email: {
           type: Sequelize.STRING,
           defaultValue: '',
+          unique: {
+            msg: 'E-mail já existe',
+          },
           validate: {
             isEmail: {
               msg: 'E-mail inválido',
