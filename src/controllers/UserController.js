@@ -22,7 +22,16 @@ class UserController {
       return res.json(null);
     }
   }
+
   // # show
+  async show(req, res) {
+    try {
+      const user = await User.findByPk(req.params.id);
+      return res.json(user);
+    } catch (error) {
+      return res.json(null);
+    }
+  }
 
   // # update
 
