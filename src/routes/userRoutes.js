@@ -4,11 +4,15 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.post('/', userController.store);
+// - não deveriam existir em aplicações normais, pois a mostra de todos os usuários ou o retorno
+// - de todos os dados de um usuário não são situações normais, e podem ser vistos como uma falha de segurança.
+// - poderiam existir com certas modificações para algum usuário com privilégios de admin
 router.get('/', loginRequired, userController.index);
 router.get('/:id', userController.show);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+
+router.post('/', userController.store);
+router.put('/', loginRequired, userController.update);
+router.delete('/', loginRequired, userController.delete);
 
 export default router;
 
