@@ -4,7 +4,7 @@ import { extname, resolve } from 'path';
 const aleatorio = () => Math.floor(Math.random() * 10000 + 10000);
 
 export default {
-  storage: multer.diskStoraged({
+  storage: multer.diskStorage({
     destination: (req, file, cb) => {
       // primeiro parâmetro é o que ocorre no caso de erro, segundo o caminho para salvar a foto
       cb(null, resolve(__dirname, '..', '..', 'uploads'));
