@@ -13,7 +13,7 @@ export default {
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
       // primeiro parâmetro é o que ocorre no caso de erro, segundo o caminho para salvar a foto
-      cb(null, resolve(__dirname, '..', '..', 'uploads'));
+      cb(null, resolve(__dirname, '..', '..', 'uploads', 'images'));
     },
     filename: (req, file, cb) => {
       // primeiro prâmetro é o caso de erro, segundo o nome do arquivo.
