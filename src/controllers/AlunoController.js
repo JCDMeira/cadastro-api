@@ -1,4 +1,5 @@
 import Aluno from '../models/Aluno';
+import Foto from '../models/Foto';
 
 class AlunoController {
   // @ index
@@ -13,6 +14,14 @@ class AlunoController {
         'peso',
         'altura',
       ],
+      order: [
+        ['id', 'DESC'],
+        [Foto, 'id', 'DESC'],
+      ],
+      include: {
+        model: Foto,
+        attributes: ['id', 'filename'],
+      },
     });
 
     return res.json(alunos);
@@ -70,7 +79,25 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await Aluno.findByPk(id, {
+        attributes: [
+          'id',
+          'nome',
+          'sobrenome',
+          'email',
+          'idade',
+          'peso',
+          'altura',
+        ],
+        order: [
+          ['id', 'DESC'],
+          [Foto, 'id', 'DESC'],
+        ],
+        include: {
+          model: Foto,
+          attributes: ['id', 'filename'],
+        },
+      });
 
       if (!aluno) {
         return res.status(400).json({
