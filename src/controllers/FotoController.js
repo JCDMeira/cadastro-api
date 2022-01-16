@@ -20,7 +20,7 @@ class FotoController {
 
         const foto = await Foto.create({ originalname, filename, aluno_id });
 
-        return res.json(req.file);
+        return res.json(foto);
       } catch (e) {
         return res.json(400).json({
           errors: ['Aluno não existe!'],
